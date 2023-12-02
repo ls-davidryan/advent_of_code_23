@@ -3,25 +3,17 @@ import java.io.File
 fun getInput(fileName: String) = File("src/main/resources/input/$fileName.txt").readLines()
 
 fun main() {
-    part1()
-    part2()
+    println("part_1: ${part1()}")
+    println("part_2: ${part2()}")
 }
 
-private fun part1() {
-    val result = getInput("aoc_1")
+private fun part1() = getInput("aoc_1")
         .map { it.replace(Regex("[A-z]"), "") }
         .sumOf { "${it[0]}${it[it.length - 1]}".toInt() }
 
-    println("part_1: $result")
-}
-
-private fun part2() {
-    val result = getInput("aoc_1")
+private fun part2() = getInput("aoc_1")
         .map { findFirstDigit(it.toCharArray()) + findLastDigit(it.toCharArray()) }
         .sumOf(String::toInt)
-
-    println("part_2: $result")
-}
 
 private fun findFirstDigit(input: CharArray): String {
     var tracker = ""
